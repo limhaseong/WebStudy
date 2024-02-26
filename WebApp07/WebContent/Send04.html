@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Send04.html</title>
+<link rel="stylesheet" type="text/css" href="css/main.css">
+
+<script type="text/javascript">
+
+	function check()
+	{
+		var form = document.loginForm;
+		
+		if (form.userId.value == "")
+		{
+			alert("아이디를 입력해주세요");
+			form.userId.focus();
+		}
+		else if (form.password.value == "")
+		{
+			alert("비밀번호를 입력해주세요");
+			form.userPwd.focus();
+		}
+		else if (form.userName.value == "")
+		{
+			alert("이름을 입력해주세요");
+			form.userName.focus();
+		}
+		else if (form.userTel.value == "")
+		{
+			alert("전화번호를 입력해주세요");
+			form.userTel.focus();
+		}
+		else
+		{
+			form.submit();
+		}
+		
+	}
+
+</script>
+
+</head>
+<body>
+
+<!-- 
+	○ 데이터 송수신 실습 04
+	   - 회원 가입과 관련한 기본 정보를 입력받는 html 페이지를 작성한다.
+	   
+	   - 입력된 데이터를 서버로 전송하기 전에
+	     (즉, 클라이언트 측에서 작성한 내용을 서버에 제출하기 전에)
+	     입력 데이터에 대한 기본적인 검사 과정을
+	     자바스크립트를 활용하여 추가할 수 있도록 한다.
+	     
+	     아이디(*)		[ textbox ]
+	     패스워드(*)		[ textbox ]
+	     이름(*)			[ textbox ]
+	     전화번호(*)		[ textbox ]
+	     
+	     성별			● 여자  ○ 남자
+	     
+	     지역			[ 서울 ▼ ]
+	                      대전
+	                      광주
+	                      대구
+	     
+	     수강과목        □자바기초 □오라클중급 □JDBC심화 □JSP활용
+	     
+	     < 회원가입 > < 취소 >
+	     
+	   - 필수 입력 항목(*)을 포함한 입력 내용을 구성한 후
+	     회원 가입 버튼 클릭 시
+	     회원 입력 정보들의 내용을 출력하는 JSP 페이지(Receive04.jsp)를 구성하여
+	     데이터를 전달할 수 있도록 한다.
+	   
+	   - 사용자의 최초 요청 주소는
+	     http://localhost:3306/WebApp07/Send04.html 로 한다.
+
+	○ Send04.html
+	   Receive04.jsp
+ -->
+ 
+ <div>
+	<form action="Receive04.jsp" method="post" name="loginForm">
+		<table class="table">
+			<tr>
+				<th>아이디(*)</th>
+				<td>
+					<input type="text" name="userId" class="txt">
+				</td>
+			</tr>
+			<tr>
+				<th>패스워드(*)</th>
+				<td>
+					<input type="password" name="password" class="txt">
+				</td>
+			</tr>
+			<tr>
+				<th>이름(*)</th>
+				<td>
+					<input type="text" name="userName" class="txt">
+				</td>
+			</tr>
+			<tr>
+				<th>전화번호(*)</th>
+				<td>
+					<input type="tel" name="userTel" class="txt">
+				</td>
+			</tr>
+			<tr>
+				<th>성별</th>
+				<td>
+					<label><input type="radio" name="gender" value="M">남자</label>
+					<label><input type="radio" name="gender" value="F">여자</label>
+				</td>
+			</tr>
+			<tr>
+				<th>지역</th>
+				<td>
+					<p><select name="city">
+						<!-- value 값을 특수문자로 하고 <form> 의 method를 GET 방식으로 할 경우 조심하자 -->
+						<option value="서울">서울</option> 	
+						<option value="대전">대전</option>
+						<option value="광주">광주</option>
+						<option value="대구">대구</option>
+					</select></p>		
+				</td>
+			</tr>
+			<tr>
+				<th>수강과목</th>
+				<td>
+					<label><input type="checkbox" name="sub" value="자바기초">자바기초</label>
+					<label><input type="checkbox" name="sub" value="오라클중급">오라클중급</label>
+					<label><input type="checkbox" name="sub" value="JDBC심화">JDBC심화</label>
+					<label><input type="checkbox" name="sub" value="JSP활용">JSP활용</label>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<button type="button" class="btn" style=""width: 150px;" onclick="check()">회원가입</button>
+					<button type="reset" class="btn" style=""width: 150px;">취소</button>
+				</td>
+			</tr>
+		</table>
+	</form>
+</div>
+</body>
+</html>
