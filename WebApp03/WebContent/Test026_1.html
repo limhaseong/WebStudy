@@ -1,0 +1,156 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test026_1.html</title>
+
+<style type="text/css">
+
+* {font-size: 30px;}
+
+input.txt1{width: 20px; text-align: center}
+
+input.txt{width: 700px;}
+
+input.btn {
+  position: relative;
+  display: inline-block;
+  font-size: 22px;
+  padding: 20px 60px;
+  color: white;
+  margin: 20px 10px 10px;
+  border-radius: 6px;
+  text-align: center;
+  transition: top .01s linear;
+  text-shadow: 0 1px 0 rgba(0,0,0,0.15);
+}
+input.btn    {background-color: #e74c3c;}
+
+input.btn:active {
+  top: 9px;
+}
+
+/* 3D button colors */
+input.btn {
+  background-color: #e74c3c;
+  box-shadow: 0 0 0 1px #c63702 inset,
+        0 0 0 2px rgba(255,255,255,0.15) inset,
+        0 8px 0 0 #C24032,
+        0 8px 0 1px rgba(0,0,0,0.4),
+        0 8px 8px 1px rgba(0,0,0,0.5);
+}
+input.btn:active {
+  box-shadow: 0 0 0 1px #c63702 inset,
+        0 0 0 2px rgba(255,255,255,0.15) inset,
+        0 0 0 1px rgba(0,0,0,0.4);
+}
+
+</style>
+
+<script type="text/javascript">
+
+	function rpsGame()
+	{	
+		var user = document.getElementById("user").value;
+		
+		var result = "";
+		
+		var userStr = "";
+		var comStr = "";
+		
+		if (user == 1 || user == 2 || user == 3)
+		{
+			var com = Math.floor(Math.random() * 3+1);
+			
+			if (user==1 && com==1 || user==2 && com==2 || user==3 && com==3)
+			{
+				result = "비겼습니다.";
+			}
+			else if (user==1 && com==2 || user==2 && com==3 || user==3 && com==1)
+			{
+				result = "당신이 졌습니다."
+			}
+			else
+			{
+				result = "당신이 이겼습니다."
+			}
+			
+			if (user == 1)
+			{
+				userStr = "가위";
+			}
+			else if (user == 2) 
+			{
+				userStr = "바위";
+			}
+			else
+			{
+				userStr = "보";
+			}
+			
+			if (com == 1)
+			{
+				comStr = "가위";
+			}
+			else if (com == 2) 
+			{
+				comStr = "바위";
+			}
+			else
+			{
+				comStr = "보";
+			}
+			
+			document.getElementById("result").value = "사용자:"+userStr+" 컴퓨터:"+comStr+" → "+result
+		}
+		else
+		{
+			alert("유효한 숫자를 골라주세요.");
+		}
+		
+		
+	}
+
+</script>
+
+</head>
+<body>
+
+<div>
+	<h1>자바스크립트 활용</h1>
+	<hr>
+</div>
+<br><br>
+
+<!-- 
+	가위, 바위, 보 게임을 구성한다.
+	HTML, CSS, Javascript 를 활용한다.
+	자바스크립트 난수 발생 함수를 찾아 활용한다.
+	
+	→ http://w3schools.com
+	→ http://koxo.com
+	
+	페이지 레이아웃
+	---------------------------------------------------------------
+	
+	입력(1.가위, 2.바위, 3. 보)		[] <게임결과 확인>
+	
+	[			사용자: 바위 컴퓨터: 보 → 컴퓨터가 이겼습니다.	 ]
+	
+	----------------------------------------------------------------
+ -->
+
+<div>
+	<form action="">
+	입력(1.가위, 2.바위, 3.보)<input type="text" id="user" class="txt1">&nbsp;
+	<input type="button" class="btn" value="게임결과 확인" onclick="rpsGame()">
+	<br><br>
+	<input type="text" id="result" class="txt" disabled="disabled">
+	</form>
+</div>
+
+
+
+</body>
+</html>

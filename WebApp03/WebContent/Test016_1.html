@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test016_1.html</title>
+<style type="text/css">
+	* {color: #223322; font-family: 나눔고딕코딩; font-weight: bold;}
+	input:focus {background-color: #eeeedd;}
+	input.btn {width: 80px; font-weight: bold; font-family: 맑은 고딕;}
+	input.op {width: 64px;}
+	input.btn:hover {color: orange; background-color: #334433;}
+	input.btn:active {color: red;}
+	.txtNum {width: 80px;}
+	#result {width: 120px; text-align: center;}
+
+</style>
+
+<script type="text/javascript">
+	
+	/* function test1()
+	{
+		alert("덧셈 연산 수행");
+	}
+	
+	function test2()
+	{
+		alert("뺄셈 연산 수행");
+	}
+	
+	function test3()
+	{
+		alert("곱셈 연산 수행");
+	}
+	
+	function test4()
+	{
+		alert("나눗셈 연산 수행");
+	} */
+	
+	function test(obj)
+	{
+		//alert(obj);
+		//alert(obj.value); //value값 나옴
+		
+		var vNum1 = document.getElementById("num1").value;
+		var vNum2 = document.getElementById("num2").value;
+		var vResult = 0;
+		
+		if (obj.value == "더하기")  //자바에서는 obj.value.equals("더하기")
+		{
+			//테스트
+			//alert("덧셈 연산 수행");
+			
+			 vResult = parseInt(vNum1) + parseInt(vNum2);
+		}
+		
+		else if (obj.value == "빼기")
+		{
+			//테스트
+			//alert("뺄셈 연산 수행");
+			
+			vResult = parseInt(vNum1) - parseInt(vNum2);
+		}
+		
+		else if (obj.value == "곱하기")
+		{
+			//테스트
+			//alert("곱셈 연산 수행");
+			
+			vResult = parseInt(vNum1) * parseInt(vNum2);
+		}
+		
+		else if (obj.value == "나누기")
+		{
+			//테스트
+			//alert("나눗셈 연산 수행");
+			
+			vResult = parseInt(vNum1) / parseInt(vNum2);
+		}
+		
+		//테스트
+		//alert(vResult);
+		
+		document.getElementById("result").value = vResult;
+		
+	} 
+
+</script>
+
+</head>
+<body>
+
+<div>
+	<h1>자바스크립트 활용</h1>
+	<hr>
+</div>
+
+<div>
+	<p>사용자로부터 두 개의 정수를 입력받고</p>
+	<p>합, 차, 곱 몫을 연산하여 연산 결과를 페이지에 출력할 수 있도록 한다.</p>
+	<p>HTML, CSS, Javascript 를 활용하여 처리한다.</p>
+</div>
+
+<div>
+	<form>
+		정수1 <input type="text" id="num1" class="txtNum">
+	 	정수2 <input type="text" id="num2" class="txtNum">
+	 	<br><br>
+	 	
+	 	<!-- 여러개의 함수로도 할 수 있음 -- 방법1
+	 	<input type="button" class="btn op" value="더하기" onclick="test1()">
+	 	<input type="button" class="btn op" value="빼기" onclick="test2()">
+	 	<input type="button" class="btn op" value="곱하기" onclick="test3()">
+	 	<input type="button" class="btn op" value="나누기" onclick="test4()">
+	 	<br><br> -->
+	 	
+	 	<!-- 방법2 -->
+	 	<input type="button" class="btn op" value="더하기" onclick="test(this)">
+	 	<input type="button" class="btn op" value="빼기" onclick="test(this)">
+	 	<input type="button" class="btn op" value="곱하기" onclick="test(this)">
+	 	<input type="button" class="btn op" value="나누기" onclick="test(this)">
+	 	<br><br>
+	 	
+	 	결과 <input type="text" id="result" class="txtNum" disabled="disabled">
+		<input type="reset" class="btn" value="취소">
+	</form>
+</div>
+
+</body>
+</html>

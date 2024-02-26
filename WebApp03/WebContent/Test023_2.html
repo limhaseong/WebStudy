@@ -1,0 +1,112 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test023_2.html</title>
+
+<style type="text/css">
+
+</style>
+
+<script type="text/javascript">
+
+function addStu()
+{	
+	var n = 0;
+	var arr = new Array();
+	var str = "";
+	
+	do
+	{
+		str = prompt("이름 국어 영어 수학(" +(n+1)+ ")");
+		if(str==null || str=="." || str==" " || str=="")
+			break;
+		
+		var temp = str.split(" ");
+		
+		arr[n] = temp;
+		
+		n++;
+		//document.getElementById("txtResult").value += arr[n][0] + arr[n][1] + arr[n][2] + arr[n][3] + "\n";
+	} while (true);
+	
+	
+	var temp2;
+	
+	for(var i = 0; i < arr.length - 1; i++)
+	{
+		for(var j = 0; j < arr.length - 1 - i; j++)
+		{
+			var sum  = parseInt(arr[j][1]) + parseInt(arr[j][2]) + parseInt(arr[j][3]);
+			var sum2 = parseInt(arr[j+1][1]) + parseInt(arr[j+1][2]) + parseInt(arr[j+1][3]);
+			
+			if(sum < sum2)
+			{
+				temp2 = arr[j];
+				arr[j] = arr[j+1];
+				arr[j+1] = temp2;
+			}
+		}
+	}
+		
+	document.getElementById("txtCount").value = arr.length;
+	
+	document.getElementById("txtResult").value = "이름   국어   영어   수학   총점   등수\n";
+	
+	for(var i = 0; i < arr.length; i++)
+	{
+		var c = parseInt(arr[i][1]) + parseInt(arr[i][2]) + parseInt(arr[i][3]);
+		document.getElementById("txtResult").value += arr[i][0] + "   " + parseInt(arr[i][1]) + "   " + parseInt(arr[i][2]) + "   " + parseInt(arr[i][3]) + "   "
+	+ c + "   " + parseInt(i+1) + "등"+"\n";
+	}
+	
+}
+
+</script>
+
+</head>
+<body>
+
+<div>
+	<h1>자바스크립트 활용</h1>
+	<hr>
+</div>
+
+	<!-- prompt를 활용하여 여러 명의 성적 데이터를 입력받고,
+	등수를 부여하여, 리스트를 출력하는 페이지를 구성한다.
+	HTML, CSS, Javascript 활용한다.
+	
+	페이지 레이아웃 
+	-----------------------------------------------------------
+	
+	<성적 정보 입력> ──────-> prompt() -> 이름 국어 영어 수학(1) :
+	
+	전체 인원 수: [	] 명
+	---------------------------------------- textarea
+	이름    국어  영어   수학   총점   등수
+ 	김다슬   80    70     60     xxx    1등
+	오수경   70    60     50     xxx    2등
+	김경태   60    50     40     xxx    3등
+	박범구   50    40     30     xxx    4등
+	----------------------------------------
+	-->
+<div>
+	<form>
+		<br>
+		
+		<input type="button" value="성적 정보 입력" class="btn" onclick="addStu()">
+		<br><br>
+		
+		전체 인원 수 :
+		<input type="text" id="txtCount" class="txt" readonly="readonly"> 명
+		<br><br>
+		
+		<textarea rows="10" cols="40" id="txtResult"></textarea>
+	</form>
+</div>
+	
+
+
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test030.html</title>
+
+<script type="text/javascript">
+
+	function actionChoice()
+	{
+		var radioObj = document.getElementsByName("radioGroup");
+		
+		var radiocho = 0;
+		
+		for (var i = 0; i < radioObj.length; i++)
+		{
+			if (radioObj[i].checked)
+			{
+				radiocho = radioObj[i].value;
+				break;
+			}
+		}
+		return radiocho;
+	}
+	
+	function iceChoice(obj)
+	{
+		var checkArr = document.getElementsByName("checkGroup");
+		
+		var checkche = 0;
+		
+		var resultcho = actionChoice();
+		
+		if (resultcho == 0)
+		{
+			alert("사이즈가 없습니다.");
+			obj.checked=false;
+		}
+		
+		for (var i = 0; i < checkArr.length; i++)
+		{
+			if (checkArr[i].checked)
+			{
+				checkche++;
+			}
+		}
+		
+		if (resultcho < checkche)
+		{
+			alert("사이즈가 초과되었습니다.");
+			obj.checked=false;
+		}
+		
+	}
+	
+
+</script>
+
+</head>
+<body>
+
+<div>
+	<h1>자바스크립트 활용</h1>
+	<hr>
+</div>
+
+<div>
+	<h2>아이스크림 주문</h2>
+	
+	<form>
+		--- 사이즈 선택 --- <br><br>
+		<input type="radio" name="radioGroup" id="a" value="1" onclick="actionChoice()"> 싱글
+		<input type="radio" name="radioGroup" id="b" value="2" onclick="actionChoice()"> 더블
+		<input type="radio" name="radioGroup" id="c" value="3" onclick="actionChoice()"> 파인트
+		<input type="radio" name="radioGroup" id="d" value="4" onclick="actionChoice()"> 쿼터
+		<input type="radio" name="radioGroup" id="e" value="5" onclick="actionChoice()"> 패밀리
+		<input type="radio" name="radioGroup" id="f" value="6" onclick="actionChoice()"> 하프갤런
+		<br><br>
+		
+		
+		-- 종류 선택 -- <br><br>
+		<input type="checkbox" name="checkGroup" id="ice1" value="엄마는외계인" onclick="iceChoice(this)"> 엄마는외계인
+		<input type="checkbox" name="checkGroup" id="ice2" value="레인보우샤베트" onclick="iceChoice(this)"> 레인보우샤베트
+		<input type="checkbox" name="checkGroup" id="ice3" value="민트초코" onclick="iceChoice(this)"> 민트초코
+		<br>
+		
+		<input type="checkbox" name="checkGroup" id="ice4" value="바람과함께사라지다" onclick="iceChoice(this)"> 바람과함께사라지다
+		<input type="checkbox" name="checkGroup" id="ice5" value="애플민트" onclick="iceChoice(this)"> 애플민트
+		<input type="checkbox" name="checkGroup" id="ice6" value="초코나무숲" onclick="iceChoice(this)"> 초코나무숲
+		<br>
+		
+		<input type="checkbox" name="checkGroup" id="ice7" value="피스타치오아몬드" onclick="iceChoice(this)"> 피스타치오아몬드
+		<input type="checkbox" name="checkGroup" id="ice8" value="아몬드봉봉" onclick="iceChoice(this)"> 아몬드봉봉
+		<input type="checkbox" name="checkGroup" id="ice9" value="요거트31" onclick="iceChoice(this)"> 요거트31
+		<br>
+		
+		<input type="checkbox" name="checkGroup" id="ice10" value="체리쥬빌레" onclick="iceChoice(this)"> 체리쥬빌레
+		<input type="checkbox" name="checkGroup" id="ice11" value="슈팅스타" onclick="iceChoice(this)"> 슈팅스타
+		<input type="checkbox" name="checkGroup" id="ice12" value="사랑에빠진딸기" onclick="iceChoice(this)"> 사랑에빠진딸기
+		<br>
+		
+		<input type="checkbox" name="checkGroup" id="ice13" value="뉴욕치즈케이크" onclick="iceChoice(this)"> 뉴욕치즈케이크
+		<input type="checkbox" name="checkGroup" id="ice14" value="쿠앤크" onclick="iceChoice(this)"> 쿠앤크
+		<input type="checkbox" name="checkGroup" id="ice15" value="베리베리스트로베리" onclick="iceChoice(this)"> 베리베리스트로베리
+		<br>
+	
+	</form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test025.html</title>
+
+<style type="text/css">
+	* {color: #223322;}
+	input {font-family: 나눔고딕코딩; font-weight: bold;}
+	input:focus {background-color: #eeeedd;}
+	input.btn {font-weight: bold; font-family: 맑은 고딕;}
+	input.btn:hover {color: orange; background-color: #334433;}
+	input.btn:active {color: red;}
+	
+	textarea {font-family: 나눔고딕코딩; font-weight: bold; margin: 2px;}
+	#txtCount {width: 20px; text-align: right;}
+	.btn {width: 360px;}
+	.txt {width: 67px; text-align: center; font-weight: bold;}
+	th {text-align: right; background-color: #ffeeff; width: 40px;}
+</style>
+
+<script type="text/javascript">
+
+	function calen()
+	{
+		var days = [ '31','28','31','30','31','30','31','31','30','31','30','31' ];
+		var vYear = document.getElementById("txtYear").value;
+		var vMonth = document.getElementById("txtMonth").value;
+		var wee;
+		
+		if (vYear%4==0 && vYear%100!=0 || vYear%400==0)
+		{
+			days[1] = 29;
+		}
+		
+		wee = new Date(vYear+"-"+vMonth+"-"+01).getDay();
+		//             2023      11         1일의 요일을 구하는 식
+		
+		var tableNode = document.getElementById("calendarTbl");
+		var trNode = document.createElement("tr");
+		
+		for (var i=0; i<wee; i++)
+		{
+			trNode.appendChild(createThNode(" "));
+		}
+		
+		for (var i=1; i<=days[vMonth-1];i++)
+		{
+			trNode.appendChild(createThNode(i));
+			wee++;
+			
+			if (wee%7 == 0)
+			{
+				tableNode.appendChild(trNode);
+				trNode = document.createElement("tr");
+			}
+		}
+		tableNode.appendChild(trNode);
+		trNode = document.createElement("tr");
+		
+		
+		
+	}
+	
+	function createThNode(val)
+	{
+		var textNode = document.createTextNode(val);
+		var thNode = document.createElement("th");
+		thNode.appendChild(textNode);
+		
+		return thNode;
+	}
+	
+</script>
+
+</head>
+<body>
+
+<div>
+	<h1>테이블 동적 생성으로 만년달력 그리기</h1>
+	<hr>
+</div>
+
+<div>
+	<form>
+		<input type="text" id="txtYear" class="txt">년
+		<input type="text" id="txtMonth" class="txt">월
+		<br><br>
+		
+		<input type="button" class="btn" value="만년달력 그리기" onclick="calen()">
+		<br><br>
+		
+		<table border="1" id="calendarTbl">
+			<tr>
+				<th>일</th>
+				<th>월</th>
+				<th>화</th>
+				<th>수</th>
+				<th>목</th>
+				<th>금</th>
+				<th>토</th>
+			</tr>
+		</table>
+	</form>
+</div>
+
+</body>
+</html>

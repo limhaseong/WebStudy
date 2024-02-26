@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test021.html</title>
+<style type="text/css">
+ 	* {margin: 0.15cm;}
+
+	h1 {background-color: #A7EEFF; text-align: center;}
+	
+	input.btn {height: 40px; width: 100%; font-weight: bold; font-family: 맑은 고딕; border-radius:10px;}
+	input.txtNum {width: 67%}
+	input.btn:focus {background-color: #FF3232;}
+	input.btn:hover {color: #E56D29; background-color: #FFCD28;}
+	input.btn:active {color: red;}
+
+</style>
+
+<script type="text/javascript">
+	function text()
+	{
+		var arr = (document.getElementById("txt01").value).split(" ");
+		
+		//alert(arr);
+		
+		var res = "";
+		
+	 	for (var n=0; n<arr.length; n++)
+		{
+			res += arr[n] + " ";
+		}
+		
+	 	document.getElementById("txt02").value = res;
+	 	
+	 	var max = arr[0];
+	 	
+	 	for(var i=1 ; i<arr.length ; i++)
+	 	{
+			if(arr[i]>max)
+			{
+				max = arr[i];
+			}
+		}
+	 	
+	 	document.getElementById("txt03").value = max;
+	 	
+	}
+</script>
+
+</head>
+<body>
+
+<div>
+	<h1>자바스크립트 활용</h1>
+	<hr>
+</div>
+
+<!--
+ 사용자로부터 임의의 정수를 임의의 갯수만큼 입력 받고,
+ 그 내용으로 배열을 구성하여,
+ 구성한 정수들 중 가장 큰 수를 출력해줄 수 있는 페이지를 구현한다.
+ HTML, CSS, Javascript 활용한다
+ 
+ 페이지 레이아웃
+ --------------------------------------------------------------
+ 
+ 데이터 입력(공백 구분) 	[ 21 86 258 43 7 ] -> 배열 구성 			txt01
+ 
+ 		< 결과 확인 >
+ 
+ - 전체 출력 [ 21 86 258 43 7 ] 				-> 배열 전체 출력 	txt02
+ - 가장 큰 수 [ 258 ] 											txt03
+ 
+ 
+ --------------------------------------------------------------
+ -->
+ 
+<div>
+	<form>
+		데이터 입력(공백 구분)<input type="text" id="txt01" class="txtNum"><br>
+		
+		<input type="button" class="btn" value="< 결과 확인 >" onclick="text()"><br>
+		- 전체 출력 <input type="text" id="txt02" class="txt" disabled="disabled"><br>
+		- 가장 큰 수<input type="text" id="txt03" class="txt" disabled="disabled">
+	</form>
+</div>
+
+</body>
+</html>

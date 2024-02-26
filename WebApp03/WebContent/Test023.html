@@ -1,0 +1,156 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test023.html</title>
+
+<style type="text/css">
+	* {color: #223322;}
+	input {font-family: 나눔고딕코딩; font-weight: bold;}
+	input:focus {background-color: #eeeedd;}
+	input.btn {font-weight: bold; font-family: 맑은 고딕;}
+	input.btn:hover {color: orange; background-color: #334433;}
+	input.btn:active {color: red;}
+	
+	textarea {font-family: 나눔고딕코딩; font-weight: bold; margin: 2px;}
+	#txtCount {width: 20px; text-align: right;}
+	.btn {width: 360px;}
+</style>
+
+<script type="text/javascript">
+
+	function actionScore()
+	{
+		//확인
+		//alert("함수 호출 확인~!!")
+		
+		var str = "";
+		
+		//check~!!
+		var arr = new Array(new Array(), new Array(), new Array(), new Array(), new Array(), new Array());
+		//					이름들		국어점수들	  영어점수들	   수학점수들    총점들		 등수들
+		//        ----------  --------------------------------------------------------------------------
+		//   이 큰배열의 길이=6으로 됨              안에 작은 배열은 길이 지정 안함.
+		
+		var n = 0;
+		
+		do
+		{
+			str = prompt("이름 국어 영어 수학(" + (n+1) + ") : ");   // 김지민 90 80 70
+			
+			if (str==null || str=="." || str==" " || str=="")
+			{
+				break;
+			}
+			
+			var member = str.split(" ");
+			//결과-- var member = ["김지민", "90", "80", "70"];
+			
+			//check~!!
+			arr[0][n] = member[0];
+			arr[1][n] = member[1];
+			arr[2][n] = member[2];
+			arr[3][n] = member[3];
+			arr[4][n] = Number(member[1]) + Number(member[2]) + Number(member[3]);
+			arr[5][n] = 1;
+			
+			n++;
+			
+			
+			
+		} while (true);
+		
+		//석차(등수)계산
+		for (var i = 0; i < arr[0].length; i++)     // 현재 코드에서는 arr[0], arr[1], arr[2], arr[3],... 다 같다
+		{
+			for (var j = 0; j < arr[0].length; j++)	
+			{
+				if (i==j)
+				{
+					continue; 							// 뒷부분 무시하고 계속하라.
+				}
+				
+				if (Number(arr[4][i]) < Number(arr[4][j])) // 첫 번째 학생의 총점 < 두 번째 학생의 총점   // 총점 비교	// ┐
+				{ 																										// │
+					// i 번째 학생의 등수(arr[5][i])를 1만큼 증가(이유: 40점과 50점이 있을때 40점인 사람이 2등으로 1 증가)	// │ continue 기준으로 뒷부분
+					arr[5][i] = Number((arr[5][i]) + 1).toString(); 													// │
+				}																										// ┘
+			}
+		}
+		
+		// 여기까지 수행하면 arr 배열 구성 끝~!!
+		
+		var result = "";
+		
+		// check~!!
+		for (var j = 0; j < arr[0].length; j++)
+		{
+			for (var k = 0; k < arr.length; k++)
+			{
+				// 확인
+				//alert(k+ " " + j);
+				result += arr[k][j] + "  ";
+				
+			}
+			result += "\n"; //개행
+		}
+		
+		document.getElementById("txtCount").value = arr[0].length;   // arr[1], arr[2], ...  다 같음
+		document.getElementById("memberList").value = "이름    국어   영어   수학   총점   등수\n";
+		document.getElementById("memberList").value += result;
+		
+	}
+
+</script>
+
+</head>
+<body>
+
+<div>
+	<h1>자바스크립트 활용</h1>
+	<hr>
+</div>
+
+<!-- 
+	『prompt()』를 활용하여 여러 명의 성적 데이터를 입력받고,
+	등수를 부여하여, 리스트를 출력하는 페이지를 구성한다.
+	HTML, CSS, Javascript 활용한다.
+	
+	페이지 레이아웃
+	-------------------------------------------------------
+	
+	< 성적 정보 입력 > ────→ prompt() ────→ 이름 국어 영어 수학(1) : 
+	
+	전체 인원 수 :    [    ] 명
+	-----------------------------------------------→ textarea
+	이름    국어   영어   수학    총점    등수
+	김다슬   80     70     60     xxx     1등
+	오수경   70     60     50     xxx     2등
+	김경태   60     50     40     xxx     3등
+	박범구	 50     40     30     xxx     4등
+	----------------------------------------------- 
+		
+	-------------------------------------------------------
+-->
+
+<div>
+	<form>
+		<br>
+		
+		<input type="button" value="성적 정보 입력" class="btn" onclick="actionScore()">
+		<br><br>
+		
+		전체 인원 수
+		<input type="text" id="txtCount" class="txt" readonly="readonly"> 명
+		<br>
+		
+		<textarea rows="10" cols="50" id="memberList" readonly="readonly"></textarea>
+	</form>
+</div>
+
+
+
+
+</body>
+</html>

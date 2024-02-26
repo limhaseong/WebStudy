@@ -1,0 +1,112 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test023_1.html</title>
+
+<style type="text/css">
+
+</style>
+
+<script type="text/javascript">
+
+	function addScore()
+	{	
+		// 확인
+		//alert("함수 호출 확인~!!!");
+		
+		var str = "";
+		var outerArr = new Array(new Array(), new Array(), new Array(), new Array(), new Array());
+		var tot = new Array();
+		var n = 0;
+		
+		do
+		{
+			str = prompt("이름 국어 영어 수학(" + (n+1) + ")");
+			
+			if (str==null || str=="." || str==" " || str=="")
+			{
+				break;
+			}
+			
+			var students = str.split(" ");
+			
+			outerArr[n][0] = students[0];
+			outerArr[n][1] = students[1];
+			outerArr[n][2] = students[2];
+			outerArr[n][3] = students[3];
+			outerArr[n][4] = (Number(students[1]) + Number(students[2]) + Number(students[3]));
+			
+			for(var i = 0; i < outerArr.length - 1; i++)
+			{
+				for(var j = 0; j < outerArr.length - 1 - i; j++)
+				{
+					
+					if(outerArr[j][4] < outerArr[j+1][4])
+					{
+						var temp2 = arr[j];
+						arr[j] = arr[j+1];
+						arr[j+1] = temp2;
+					}
+				}
+			}
+			
+			n++;
+			
+			document.getElementById("txtCount").value = n;
+			
+			document.getElementById("txtResult").value = "이름 국어 영어 수학 총점 등수\n";
+			
+			for (var i=0; i<n; i++)
+			{
+				document.getElementById("txtResult").value += outerArr[i][0] + " " + outerArr[i][1] + " " + outerArr[i][2] + " " + outerArr[i][3] + " " + outerArr[i][4] +" " + (i+1)+"등" +"\n";
+			}
+			
+			
+		} while (true);
+	}
+
+</script>
+
+</head>
+<body>
+
+<div>
+	<h1>자바스크립트 활용</h1>
+	<hr>
+</div>
+<br>
+
+<!-- 
+	『prompt()』를 활용하여 여러 명의 성적 데이터를 입력받고.
+	  등수를 부여하여, 리스트를 출력하는 페이지를 구성한다.
+	  HTML, CSS, Jacascript 활용한다.
+	  
+	  페이지 레이아웃
+	  ------------------------------------------------------------------------------
+	  
+	  < 성적 정보 입력 > → prompt() → 이름 국어 영어 수학(1) :
+	  
+	  전체 인원수 : [] 명
+	   ----------------------------------------------------- → textarea
+	   이름		국어 	영어 	수학 	총점 	등수
+	   김다슬	80      70      60      xxx      1등
+	   오수경   70      60      50      xxx      2등
+	   김경태   60      50      40      xxx      3등  
+	   박범구   50      40      30      xxx      4등
+	   -----------------------------------------------------
+	   
+	   ------------------------------------------------------------------------------
+	  -->
+
+<input type="button" value="성적 정보 입력" class="btn" onclick="addScore()"><br><br>
+
+전체 인원 수 : 
+<input type="text" id="txtCount" class="txt" readonly="readonly"> 명
+<br><br>
+
+<textarea rows="10" cols="30" id="txtResult" readonly="readonly"></textarea>
+
+</body>
+</html>

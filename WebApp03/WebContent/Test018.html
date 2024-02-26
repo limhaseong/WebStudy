@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test018.html</title>
+
+<style>
+	* {margin: 0.2cm;}
+	
+	.btn
+	{
+		font-size: 20px;
+	    border: medium; 
+	    border-radius:10px; 
+	    padding:15px;
+	    min-height: 10px; 
+	    min-width: 200px;
+  	}
+	
+	input.btn {width: 200px; font-weight: bold; font-family: 맑은 고딕;}
+	input:focus {background-color: #eeeedd;}
+	input.btn:hover {color: #EF904C; background-color: #CBFF75;}
+	input.btn:active {color: red;}
+</style>
+
+<script type="text/javascript">
+	
+	function result()
+	{
+		var vKor = document.getElementById("kor").value; //국어
+		var vEng = document.getElementById("eng").value; //영어
+		var vMat = document.getElementById("mat").value; //수학
+		
+		
+		var vAvg1 = (parseInt(vKor)+parseInt(vEng)+parseInt(vMat))/3;
+		
+		
+		document.getElementById("avg").value = vAvg1;
+		
+		avg.value = vAvg1;
+		
+		if (kor.value>=40 && eng.value>=40 && mat.value>=40 && avg.value>=60)
+		{
+			document.getElementById("res").value = "합격";
+		}
+		else if (avg.value<60)
+		{
+			document.getElementById("res").value = "불합격";
+		}
+		else if (kor.value<40 || eng.value<40 || mat.value<40 && avg.value>=60)
+		{
+			document.getElementById("res").value = "과락";
+		}
+		
+		
+	}
+	
+</script>
+
+</head>
+<body>
+<div>
+	<h1>자바스크립트 활용</h1>
+	<hr>
+</div>
+<!-- 
+	사용자로부터 이름, 국어점수, 영어점수, 수학점수를 입력받아
+	평균점수와 판정결과를 출력하는 페이지를 구성한다.
+	판정 결과는 합격, 과락, 불합격 중 하나로 처리한다.
+	
+	합격은 모든 과목 점수가 40점 이상이면서 평균 점수가 60점 이상인 경우
+	과락은 평균이 60점 이상이지만 한 과목이라도 과목 점수가 40점 미만의 과목이 존재하는 경우
+	불합격은 평균 점수가 60점 미만인 경우로 처리한다.
+	
+	HTML, CSS, Javascript 활용한다.
+	
+	페이지 레이아웃
+	---------------------------------------------------------------------------------
+	
+	이름		[		]
+	국어점수	[		]
+	영어점수	[		]
+	수학점수	[		]
+	
+	< 처리 결과 확인 >
+	
+	평균			판정결과
+	[		]	[		]
+	
+	---------------------------------------------------------------------------------
+ -->
+ 
+<div>
+	<form>
+	 	이름 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" id="name" class="txt"><br>
+	 	국어점수 <input type="text" id="kor" class="txtNum"><br>
+	 	영어점수 <input type="text" id="eng" class="txtNum"><br>
+	 	수학점수 <input type="text" id="mat" class="txtNum"><br>
+	 	
+	 	<br>
+	 	
+	 	<input type="button" class="btn" value="< 처리 결과 확인 >" onclick="result()"><br>
+	 	
+	 	평균<br>
+	 	<input type="text" id="avg" class="txtNum" disabled="disabled"><br>
+	 	판정결과<br>
+	 	<input type="text" id="res" class="txtNum" disabled="disabled"><br>
+	</form>
+</div>
+
+</body>
+</html>
